@@ -2,6 +2,16 @@
 
 Releases are built with `dist` and published by GitHub Actions.
 
+## Changelog Management
+
+All releases must update the [CHANGELOG.md](./CHANGELOG.md) file with:
+
+1. Version number and release date
+2. Category of changes (Added, Changed, Fixed)
+3. Breaking changes if any
+
+Follow the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
+
 ## Branch Flow
 
 Use the repository's gitflow-style branches:
@@ -20,7 +30,8 @@ git ls-remote --heads origin
 ## Local Release Prep
 
 1. Update `version` in `Cargo.toml`.
-2. Run:
+2. Update [CHANGELOG.md](./CHANGELOG.md) with release notes.
+3. Run:
 
    ```bash
    cargo fmt
@@ -50,10 +61,19 @@ The `Release` workflow builds all configured target binaries and creates a GitHu
 
 From `main`:
 
-```bash
-git tag vX.Y.Z
-git push origin vX.Y.Z
-```
+1. Update [CHANGELOG.md](./CHANGELOG.md) with release date.
+2. Commit changelog changes:
+
+   ```bash
+   git commit -am "Update CHANGELOG for v$VERSION"
+   ```
+
+3. Tag and push:
+
+   ```bash
+   git tag vX.Y.Z
+   git push origin vX.Y.Z
+   ```
 
 The `Release` workflow builds all configured target binaries, creates a GitHub Release, and publishes the Homebrew formula to:
 
