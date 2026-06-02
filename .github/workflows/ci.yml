@@ -74,3 +74,26 @@ jobs:
           name: notion-sql-${{ github.run_id }}-${{ github.sha }}-macos
           path: target/release/notion-sql
           if-no-files-found: error
+
+  windows-build:
+    name: Windows branch build
+    runs-on: windows-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Upload branch binary
+        uses: actions/upload-artifact@v7
+        with:
+          name: notion-sql-${{ github.run_id }}-${{ github.sha }}-windows
+          path: target/release/notion-sql.exe
+          if-no-files-found: error

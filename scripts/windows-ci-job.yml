@@ -1,0 +1,30 @@
+# Add this to .github/workflows/ci.yml after the macos-build job
+
+  windows-build:
+    name: Windows CI build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Run tests
+        run: cargo test --all-targets --all-features
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Upload branch binary
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v7
+        with:
+          name: notion-sql-${{ github.run_id }}-${{ github.sha }}-windows
+          path: target/release/notion-sql.exe
+          if-no-files-found: error

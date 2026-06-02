@@ -198,7 +198,7 @@ fn render_csv(rows: &[PageRow], columns: &[String]) -> Result<String> {
 }
 
 /// Converts one Notion property value into its display string.
-fn property_string(row: &PageRow, column: &str) -> String {
+pub fn property_string(row: &PageRow, column: &str) -> String {
     let Some(property) = row.properties.get(column) else {
         return String::new();
     };
@@ -290,39 +290,5 @@ fn value_to_display(value: &Value) -> String {
         Value::Bool(value) => value.to_string(),
         Value::Number(value) => value.to_string(),
         other => other.to_string(),
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    //! Tests for rendering Notion values into terminal-safe display strings.
-
-    use serde_json::json;
-
-    use super::*;
-
-    /// Verifies date ranges and time zones are retained in display output.
-    #[test]
-    fn renders_date_ranges_and_time_zones() {
-        let row = PageRow {
-            id: "page-id".to_string(),
-            title: "Task".to_string(),
-            properties: Map::from_iter([(
-                "Due".to_string(),
-                json!({
-                    "type": "date",
-                    "date": {
-                        "start": "2026-06-01T09:00:00.000-05:00",
-                        "end": "2026-06-01T10:00:00.000-05:00",
-                        "time_zone": "America/Chicago"
-                    }
-                }),
-            )]),
-        };
-
-        assert_eq!(
-            property_string(&row, "Due"),
-            "2026-06-01T09:00:00.000-05:00..2026-06-01T10:00:00.000-05:00 America/Chicago"
-        );
     }
 }

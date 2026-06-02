@@ -6,9 +6,11 @@ description = "Run SQL-style CRUD statements against Notion databases"
 license = "MIT"
 repository = "https://github.com/KofTwentyTwo/notion-sql"
 homepage = "https://github.com/KofTwentyTwo/notion-sql"
+documentation = "https://docs.rs/notion-sql"
 keywords = ["notion", "sql", "cli", "database"]
 categories = ["command-line-utilities", "database"]
 exclude = ["REQUEST.md", "docs/"]
+readme = "README.md"
 
 [dependencies]
 anyhow = "1"
