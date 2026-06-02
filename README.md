@@ -18,6 +18,16 @@ From source:
 cargo install --path .
 ```
 
+## Pre-built Binaries
+
+Pre-built binaries are available for all major platforms:
+
+- **macOS**: ARM64 (Apple Silicon) and x86_64
+- **Linux**: ARM64 and x86_64  
+- **Windows**: x86_64 (MSVC)
+
+Download from the [GitHub Releases](https://github.com/KofTwentyTwo/notion-sql/releases) page.
+
 ## Authentication
 
 Create a Notion internal integration, copy its integration secret, and expose it as `NOTION_TOKEN`:
