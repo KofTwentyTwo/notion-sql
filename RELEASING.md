@@ -21,9 +21,10 @@ Use the repository's gitflow-style branches:
 - `release/*` or `rc/*` branches stabilize release candidates and run the same CI plus branch artifact publishing.
 - `main` is production and should only receive release-ready changes.
 
-Do not push release tags from a workstation until GitHub authentication has been verified. This checkout currently uses the SSH remote `git@github.com:KofTwentyTwo/notion-sql.git`, and the last local verification failed because the SSH agent could not sign the configured GitHub key even though `gh auth status` was logged in as `KofTwentyTwo`. Fix SSH agent access or intentionally switch the GitHub CLI git protocol to HTTPS, then verify with:
+Before pushing release tags, verify GitHub authentication:
 
 ```bash
+gh auth status
 git ls-remote --heads origin
 ```
 
