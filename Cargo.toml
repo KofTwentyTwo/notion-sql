@@ -1,0 +1,51 @@
+[package]
+name = "notion-sql"
+version = "1.0.0"
+edition = "2021"
+description = "Run SQL-style CRUD statements against Notion databases"
+license = "MIT"
+repository = "https://github.com/KofTwentyTwo/notion-sql"
+homepage = "https://github.com/KofTwentyTwo/notion-sql"
+documentation = "https://docs.rs/notion-sql"
+keywords = ["notion", "sql", "cli", "database"]
+categories = ["command-line-utilities", "database"]
+exclude = ["REQUEST.md", "docs/"]
+readme = "README.md"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+comfy-table = "7"
+csv = "1"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sqlparser = "0.59"
+
+# Config for 'dist'
+[workspace.metadata.dist]
+# The preferred dist version to use in CI (Cargo.toml SemVer syntax)
+cargo-dist-version = "0.32.0"
+# CI backends to support
+ci = "github"
+# The installers to generate for each app
+installers = ["shell", "homebrew"]
+# Target platforms to build apps for (Rust target-triple syntax)
+targets = ["aarch64-apple-darwin", "aarch64-unknown-linux-gnu", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+# A GitHub repo to push Homebrew formulas to
+tap = "KofTwentyTwo/homebrew-tap"
+# Publish jobs to run in CI
+publish-jobs = ["homebrew"]
+# Path that installers should place binaries in
+install-path = "CARGO_HOME"
+# Where to host releases
+hosting = "github"
+# Whether to install an updater program
+install-updater = false
+# Keep the release workflow policy edits rather than requiring byte-for-byte regeneration.
+allow-dirty = ["ci"]
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

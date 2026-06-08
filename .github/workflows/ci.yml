@@ -1,0 +1,99 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+      - release/**
+      - rc/**
+  push:
+    branches:
+      - develop
+      - main
+      - release/**
+      - rc/**
+
+permissions:
+  contents: read
+
+jobs:
+  rust-checks:
+    name: Rust checks
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+
+      - name: Check formatting
+        run: cargo fmt --check
+
+      - name: Run clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Run tests
+        run: cargo test --all-targets --all-features
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Upload branch binary
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v7
+        with:
+          name: notion-sql-${{ github.run_id }}-${{ github.sha }}-linux-x86_64
+          path: target/release/notion-sql
+          if-no-files-found: error
+
+  macos-build:
+    name: macOS branch build
+    runs-on: macos-15
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Upload branch binary
+        uses: actions/upload-artifact@v7
+        with:
+          name: notion-sql-${{ github.run_id }}-${{ github.sha }}-macos
+          path: target/release/notion-sql
+          if-no-files-found: error
+
+  windows-build:
+    name: Windows branch build
+    runs-on: windows-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Upload branch binary
+        uses: actions/upload-artifact@v7
+        with:
+          name: notion-sql-${{ github.run_id }}-${{ github.sha }}-windows
+          path: target/release/notion-sql.exe
+          if-no-files-found: error
