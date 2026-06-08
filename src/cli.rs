@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Command line entrypoint and statement execution coordinator.
 //!
 //! This module owns the boundary between parsed SQL, Notion API operations, and

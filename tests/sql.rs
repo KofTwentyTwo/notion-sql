@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Integration tests for the crate's SQL front end.
 //!
 //! These tests exercise [`notion_sql::sql::parse_statement`], the public entry

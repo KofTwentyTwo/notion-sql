@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Tests for blocking Notion API client and Notion response adapters.
 //!
 //! # Purpose

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Notion database schema modeling and property resolution.
 //!
 //! The CLI accepts SQL column names while Notion requires canonical property

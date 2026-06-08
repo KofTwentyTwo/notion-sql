@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Integration tests for SQL `WHERE` to Notion query filter translation.
 //!
 //! These tests exercise [`notion_sql::filter::translate_where`], the function

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! SQL literal extraction and Notion property value coercion.
 //!
 //! # Purpose

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! `notion-sql` runs SQL-style CRUD statements against Notion databases.
 //!
 //! Examples:

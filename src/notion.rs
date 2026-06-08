@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Blocking Notion API client and Notion response adapters.
 //!
 //! The CLI issues one statement at a time, so a blocking `reqwest` client keeps

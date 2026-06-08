@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Integration tests for the notion-sql crate.
 //!
 //! These tests require network access to the Notion API and are marked

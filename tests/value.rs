@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Integration tests for [`coerce_property_value`], the boundary that turns a
 //! SQL literal (as parsed by `sqlparser`) into the JSON shape the Notion API
 //! expects for a single property write.

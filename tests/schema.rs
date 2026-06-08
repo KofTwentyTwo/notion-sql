@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Integration tests for [`notion_sql::schema::DatabaseSchema`] parsing.
 //!
 //! These tests exercise the public surface of `DatabaseSchema` from outside

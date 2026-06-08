@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! SQL `WHERE` expression translation for Notion database filters.
 //!
 //! `sqlparser` keeps SQL expressions in a database-neutral AST. This module

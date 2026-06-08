@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Integration tests for the crate's `output` module, exercising how raw Notion
 //! property values are rendered into human-readable, terminal-safe display strings.
 //!

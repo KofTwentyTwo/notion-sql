@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! SQL parsing and validation for the subset supported by `notion-sql`.
 //!
 //! `sqlparser` accepts a broad SQL grammar. This module constrains that AST to

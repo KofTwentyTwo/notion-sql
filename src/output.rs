@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Output rendering for query results, database listings, and mutation plans.
 //!
 //! This module is the presentation layer of the crate. It takes the structured

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Integration tests for CLI-level safety checks that run entirely offline.
 //!
 //! # Purpose

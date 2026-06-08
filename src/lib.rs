@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 James Maes
 //! Library modules for the `notion-sql` command line application.
 //!
 //! The crate separates SQL parsing, Notion schema and API access, value coercion,
