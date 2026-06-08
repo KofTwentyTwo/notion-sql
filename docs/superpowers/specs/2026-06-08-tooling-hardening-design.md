@@ -65,10 +65,13 @@ Wired into the pre-commit hook and a CI step.
 ### 4. Supply chain (`deny.toml` + CI)
 Generate `deny.toml` with `cargo deny init` (ensures the **current v2 schema** — the
 old `unlicensed`/`copyleft`/`default` keys are gone). Then configure:
-- `[licenses]` allow = `["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Unicode-3.0", "CDLA-Permissive-2.0"]`
-  — `Unicode-3.0` and `CDLA-Permissive-2.0` are **required** (the latter is `webpki-roots`,
-  standalone; the former is `unicode-ident` et al.). Other licenses resolve via OR
-  expressions.
+- `[licenses]` allow = `["MIT", "Apache-2.0", "Apache-2.0 WITH LLVM-exception", "BSD-2-Clause", "BSD-3-Clause", "ISC", "Unicode-3.0", "CDLA-Permissive-2.0"]`
+  — `Unicode-3.0` (unicode-ident et al.) and `CDLA-Permissive-2.0` (`webpki-roots`,
+  standalone) are **required**. `Apache-2.0 WITH LLVM-exception` is required by
+  `ar_archive_writer`/`rustix`/`linux-raw-sys`/`wasi` (needed for the Linux/Windows CI
+  targets). `BSD-2-Clause` is a speculative allowance (currently unused on the resolved
+  graph → cargo-deny emits a non-fatal `license-not-encountered` warning; kept as a
+  cross-platform safety margin). Other licenses resolve via OR expressions.
 - `[advisories]` — deny on RustSec advisories; `yanked = "deny"`.
 - `[bans]` — `multiple-versions = "warn"`.
 - `[sources]` — `unknown-registry = "deny"`, allow crates.io only.
