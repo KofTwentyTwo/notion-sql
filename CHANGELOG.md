@@ -7,14 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-06-08
+
+Maintenance release: documentation and development-tooling hardening only. No
+runtime behavior changes.
+
 ### Added
-- Placeholder for upcoming unreleased changes
+- Comprehensive doc comments across all source and test files (module-level `//!`
+  headers and `///` docs on every public and private item).
+- Enforced documentation lints: `missing_docs` and
+  `clippy::missing_docs_in_private_items` set to `deny` via a `Cargo.toml [lints]` table.
+- SPDX license + copyright headers on every Rust source/test file, enforced by
+  `scripts/check-headers.sh`.
+- `deny.toml` supply-chain policy (cargo-deny: advisories, license allowlist, bans,
+  sources) gated by a CI `quality` job.
+- Declared MSRV (`rust-version = "1.88"`) with a dedicated CI job that builds and
+  tests on the pinned toolchain.
+- `rustfmt.toml` (edition pin), a `justfile`, and a POSIX `pre-commit` git hook
+  running fmt / clippy / header checks locally.
+- CI rustdoc gate (`RUSTDOCFLAGS="-D warnings"`) to catch broken intra-doc links.
 
 ### Changed
-- Development updates placeholder
-
-### Fixed
-- Bug fixes placeholder
+- Documented local development gates and toolchain in `CONTRIBUTING.md`.
 
 ## [1.0.0] - 2026-06-02
 
