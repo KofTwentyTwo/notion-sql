@@ -2,6 +2,7 @@
 name = "notion-sql"
 version = "1.0.0"
 edition = "2021"
+rust-version = "1.88"
 description = "Run SQL-style CRUD statements against Notion databases"
 license = "MIT"
 repository = "https://github.com/KofTwentyTwo/notion-sql"
@@ -11,6 +12,12 @@ keywords = ["notion", "sql", "cli", "database"]
 categories = ["command-line-utilities", "database"]
 exclude = ["REQUEST.md", "docs/"]
 readme = "README.md"
+
+[lints.rust]
+missing_docs = "deny"
+
+[lints.clippy]
+missing_docs_in_private_items = "deny"
 
 [dependencies]
 anyhow = "1"
