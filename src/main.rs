@@ -9,9 +9,6 @@
 //! Set `NOTION_TOKEN` to an internal integration token and share target
 //! databases with that integration before running queries.
 
-#![warn(missing_docs)]
-#![warn(clippy::missing_docs_in_private_items)]
-
 use std::process::ExitCode;
 
 use notion_sql::notion::find_notion_api_error;

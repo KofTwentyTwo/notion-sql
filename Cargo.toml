@@ -12,6 +12,12 @@ categories = ["command-line-utilities", "database"]
 exclude = ["REQUEST.md", "docs/"]
 readme = "README.md"
 
+[lints.rust]
+missing_docs = "deny"
+
+[lints.clippy]
+missing_docs_in_private_items = "deny"
+
 [dependencies]
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }

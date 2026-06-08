@@ -5,9 +5,6 @@
 //! The crate separates SQL parsing, Notion schema and API access, value coercion,
 //! filter translation, and output rendering so the binary entrypoint stays thin.
 
-#![warn(missing_docs)]
-#![warn(clippy::missing_docs_in_private_items)]
-
 pub mod cli;
 pub mod filter;
 pub mod notion;
