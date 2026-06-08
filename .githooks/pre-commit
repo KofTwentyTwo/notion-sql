@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+# Fast local gate. Cheap checks only; full tests + cargo-deny run in CI.
+set -eu
+
+echo "pre-commit: cargo fmt --check"
+cargo fmt --check
+
+echo "pre-commit: cargo clippy"
+cargo clippy --all-targets --all-features -- -D warnings
+
+echo "pre-commit: license headers"
+./scripts/check-headers.sh
+
+echo "pre-commit: OK"
