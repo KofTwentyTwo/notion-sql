@@ -27,7 +27,7 @@ csv = "1"
 reqwest = { version = "0.12", default-features = false, features = ["blocking", "json", "rustls-tls"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-sqlparser = "0.59"
+sqlparser = "0.62"
 
 # Config for 'dist'
 [workspace.metadata.dist]
